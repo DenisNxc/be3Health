@@ -1,0 +1,147 @@
+@use '../styles/colors.scss' as colors;
+
+.main-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+html, body, app-root {
+  height: 100%;
+}
+
+body, app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.main-content {
+
+  flex: 1;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.6;
+  }
+}
+
+.footer {
+  background: linear-gradient(135deg, #{colors.$gray-800} 0%, #{colors.$gray-700} 50%, #{colors.$gray-800} 100%);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -4px 16px rgba(31, 38, 135, 0.15);
+  padding: 0.7rem 0;
+  margin-top: auto;
+  animation: slideUp 0.8s ease-out;
+  font-size: 0.95rem;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo-image {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #0077b5, #333);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.footer-logo-text {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.social-link {
+  color: white;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.social-link.linkedin:hover {
+  background: #0077b5;
+}
+.social-link.github:hover {
+  background: #333;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 0.5rem 0 0.3rem 0;
+}
+
+.footer-text {
+  text-align: center;
+  color: #bbb;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+* {
+  font-family: 'Inter', sans-serif !important;
+}
+
+html, body {
+  font-family: 'Inter', sans-serif !important;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+

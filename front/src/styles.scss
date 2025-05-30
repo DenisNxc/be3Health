@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+/* Reset completo de margens e paddings */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remover margens padrão do body */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Garantir que elementos de bloco não adicionem espaçamento */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Remover estilos padrão de listas */
+ol, ul {
+  list-style: none;
+}
+
+/* Remover espaçamento em elementos de formulário */
+input, button, textarea, select {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* Configurações básicas do body */
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  line-height: 1.6;
+}
+
+html, body, app-root {
+  height: 100%;
+  min-height: 100vh;
+}
+
+body, app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
+#root, app-root {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.mat-button,
+.mat-input-element,
+.mat-header-cell,
+.mat-cell,
+.mat-form-field,
+.mat-paginator {
+  font-family: 'Inter', sans-serif !important;
+}
+
+
+

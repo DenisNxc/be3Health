@@ -1,0 +1,168 @@
+<div class="modal-overlay" *ngIf="showModal" (click)="onClose()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>{{ client ? 'Editar Cliente' : 'Adicionar Novo Cliente' }}</h3>
+      <button class="close-btn" (click)="onClose()">×</button>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="client-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" maxlength="30" [(ngModel)]="formData.nome" style="text-transform: uppercase;" [ngClass]="{'invalid': inputErrors['nome']}" required>
+          <div class="input-error" *ngIf="inputErrors['nome']">{{ inputErrors['nome'] }}</div>
+        </div>
+        <div class="form-group">
+          <label for="sobrenome">Sobrenome</label>
+          <input type="text" id="sobrenome" name="sobrenome" maxlength="40" [(ngModel)]="formData.sobrenome" style="text-transform: uppercase;" [ngClass]="{'invalid': inputErrors['sobrenome']}" required>
+          <div class="input-error" *ngIf="inputErrors['sobrenome']">{{ inputErrors['sobrenome'] }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="birthDate">Data de Nascimento</label>
+          <input type="date" id="birthDate" name="birthDate" [(ngModel)]="formData.dataNascimento" [ngClass]="{'invalid': inputErrors['dataNascimento']}" required>
+          <div class="input-error" *ngIf="inputErrors['dataNascimento']">{{ inputErrors['dataNascimento'] }}</div>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gênero</label>
+          <select id="gender" name="gender" [(ngModel)]="formData.genero" [ngClass]="{'invalid': inputErrors['genero']}">
+            <option value="">Selecione</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Outro">Outro</option>
+          </select>
+          <div class="input-error" *ngIf="inputErrors['genero']">{{ inputErrors['genero'] }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" maxlength="14" [(ngModel)]="formData.cpf"
+                 (input)="onCPFInput($event)" placeholder="000.000.000-00"
+                 [ngClass]="{'invalid': inputErrors['cpf']}" required>
+          <div class="input-error" *ngIf="inputErrors['cpf']">{{ inputErrors['cpf'] }}</div>
+        </div>
+        <div class="form-group">
+          <label for="rg">RG</label>
+          <input type="text" id="rg" name="rg" maxlength="12" [(ngModel)]="formData.rg"
+                 (input)="onRGInput($event)" placeholder="00.000.000-0"
+                 [ngClass]="{'invalid': inputErrors['rg']}">
+          <div class="input-error" *ngIf="inputErrors['rg']">{{ inputErrors['rg'] }}</div>
+        </div>
+        <div class="form-group">
+          <label for="ufRg">UF</label>
+          <select id="ufRg" name="ufRg" [(ngModel)]="formData.ufRg" [ngClass]="{'invalid': inputErrors['ufRg']}">
+            <option value="">Selecione</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select>
+          <div class="input-error" *ngIf="inputErrors['ufRg']">{{ inputErrors['ufRg'] }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group email-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" maxlength="60" [(ngModel)]="formData.email" [ngClass]="{'invalid': inputErrors['email']}" required>
+          <div class="input-error" *ngIf="inputErrors['email']">{{ inputErrors['email'] }}</div>
+        </div>
+        <div class="form-group phone-group">
+          <label for="phone">Celular</label>
+          <input type="tel" id="phone" name="phone" maxlength="15"
+                 [(ngModel)]="formData.celular"
+                 (input)="onPhoneInput($event, 'celular')"
+                 placeholder="(00) 00000-0000"
+                 [ngClass]="{'invalid': inputErrors['celular']}" required>
+          <div class="input-error" *ngIf="inputErrors['celular']">{{ inputErrors['celular'] }}</div>
+        </div>
+        <div class="form-group fixo-group">
+          <label for="telefoneFixo">Telefone Fixo</label>
+          <input type="tel" id="telefoneFixo" name="telefoneFixo" maxlength="14"
+                 [(ngModel)]="formData.telefoneFixo"
+                 (input)="onPhoneInput($event, 'telefoneFixo')"
+                 placeholder="(00) 0000-0000"
+                 [ngClass]="{'invalid': inputErrors['telefoneFixo']}">
+          <div class="input-error" *ngIf="inputErrors['telefoneFixo']">{{ inputErrors['telefoneFixo'] }}</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" name="status" required [(ngModel)]="formData.ativo">
+          <option [ngValue]="true">ATIVO</option>
+          <option [ngValue]="false">INATIVO</option>
+        </select>
+      </div>
+
+      <div class="form-section">
+        <h4>Convênio Médico</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="convenioNome">Convênio</label>
+            <select id="convenioNome" name="convenioNome" [(ngModel)]="formData.convenioNome" [ngClass]="{'invalid': inputErrors['convenioNome']}" required>
+              <option value="">Selecione</option>
+              <option *ngFor="let convenio of convenios" [value]="convenio.nome">{{ convenio.nome }}</option>
+            </select>
+            <div class="input-error" *ngIf="inputErrors['convenioNome']">{{ inputErrors['convenioNome'] }}</div>
+          </div>
+          <div class="form-group">
+            <label for="cardNumber">Número da Carteirinha</label>
+            <input type="text" id="cardNumber" name="cardNumber" maxlength="20" [(ngModel)]="formData.numeroCarteirinha" [ngClass]="{'invalid': inputErrors['numeroCarteirinha']}" required>
+            <div class="input-error" *ngIf="inputErrors['numeroCarteirinha']">{{ inputErrors['numeroCarteirinha'] }}</div>
+          </div>
+          <div class="form-group">
+            <label for="validity">Validade</label>
+            <input type="text" id="validity" name="validity" placeholder="MM/AAAA" maxlength="7" [(ngModel)]="formData.validadeCarteirinha" (input)="onValidityInput($event)" [ngClass]="{'invalid': inputErrors['validadeCarteirinha']}" required>
+            <div class="input-error" *ngIf="inputErrors['validadeCarteirinha']">{{ inputErrors['validadeCarteirinha'] }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="onClose()">Cancelar</button>
+        <button type="submit" class="btn-save">{{ client ? 'Atualizar' : 'Salvar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  input.invalid, select.invalid {
+    border: 2px solid #e74c3c !important;
+    background: #fff6f6;
+  }
+
+  .input-error {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
+</style>
